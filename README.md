@@ -1,2 +1,2 @@
 # Shapeshifter
-Application that helps user(s) become whomever and/or whatever they desire.
+Application that assists user(s) to become whomever and/or whatever they desire.
