@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill In The Blanks Data</title>
+</head>
+<body>
+    <ul>
+        {% for submitted_intention_data in intention_data %}
+            <li>
+                <p>Identity: {{ submitted_intention_data.identity}}</p>
+                <p>Action: {{ submitted_intention_data.action}}</p>
+                <p>Submitted Date: {{ submitted_intention_data.form_submission_date}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for submitted_shift_data in shift_data %}
+            <li>
+                <p>Contradictory Beliefs: {{ submitted_shift_data.contradictory_beliefs}}</p>
+                <p>Realigned Beliefs: {{ submitted_shift_data.realigned_beliefs}}</p>
+                <p>Presence Techniques: {{ submitted_shift_data.presence_shift}}</p>
+                <p>Decision Techniques: {{ submitted_shift_data.decision_techniques}}</p>
+                <p>Promises: {{ submitted_shift_data.promises}}</p>
+                <p>Submitted Date: {{ submitted_shift_data.form_submission_date}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        
+    </ul>
+    
+</body>
+</html>

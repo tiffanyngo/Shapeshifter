@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Detail</title>
+</head>
+<body>
+    <h1>Assessment Details</h1>
+
+    {% if presence_assessment_results %}
+        <h3>Presence Assessment Results</h3>
+        <ul>
+            {% for data in presence_assessment_results %}
+                <li>
+                    <p>Choice: {{ data.choice }}</p>
+                    <p>Submitted on: {{ data.form_submission_date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+    {% if thoughts_assessment_results %}
+        <h3>Thoughts Assessment Results</h3>
+        <ul>
+            {% for data in thoughts_assessment_results %}
+                <li>
+                    <p>Choice: {{data.choice}}</p>
+                    <p>Submitted on: {{ data.form_submission_date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+    {% if feelings_assessment_results %}
+    <h3>Feelings Assessment Results</h3>
+    <ul>
+        {% for data in feelings_assessment_results %}
+            <li>
+                <p>Choice: {{data.choice}}</p>
+                <p>Submitted on: {{ data.form_submission_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+    {% if actions_assessment_results %}
+    <h3>Actions Assessment Results</h3>
+    <ul>
+        {% for data in actions_assessment_results %}
+            <li>
+                <p>Choice: {{data.choice}}</p>
+                <p>Submitted on: {{ data.form_submission_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+    {% if behaviours_assessment_results %}
+    <h3>Behaviours Assessment Results</h3>
+    <ul>
+        {% for data in behaviours_assessment_results %}
+            <li>
+                <p>Choice: {{data.choice}}</p>
+                <p>Submitted on: {{ data.form_submission_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+    {% if decision_assessment_results %}
+    <h3>Decision Assessment Results</h3>
+    <ul>
+        {% for data in decision_assessment_results %}
+            <li>
+                <p>Choice: {{data.choice}}</p>
+                <p>Submitted on: {{ data.form_submission_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+    {% if naturalness_assessment_results %}
+    <h3>Naturalness Assessment Results</h3>
+    <ul>
+        {% for data in naturalness_assessment_results %}
+            <li>
+                <p>Choice: {{data.choice}}</p>
+                <p>Submitted on: {{ data.form_submission_date }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No details available</p>
+    {% endif %}
+
+
+    <a href="{% url 'home_view' %}">Back to Home</a>
+</body>
+</html>

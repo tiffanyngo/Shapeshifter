@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Date Results</title>
+</head>
+<body>
+    <h1>Assessment Results for {{ selected_date }}</h1>
+    
+    <!-- Date Selection Form -->
+    <form method="GET" id="date-selection-form" action="{% url 'selected_date_results' %}">
+        {% csrf_token %}
+        <div id="date-selection">
+            <h2>Select a Date</h2>
+            {{ date_selection_form.as_p }} <!-- Renders form fields as paragraphs -->
+        </div>
+        <button type="submit">Filter by Date</button>
+    </form>
+
+    <!-- Display Presence Assessments -->
+    <h2>Presence Assessments</h2>
+    <ul>
+        {% if presence_data %}
+            {% for data in presence_data %}
+                <li>
+                    Choice: {{ data.choice }}<br>
+                    Submitted on: {{ data.form_submission_date }}
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>No Presence Assessments found for {{ selected_date }}.</p>
+        {% endif %}
+    </ul>
+
+    <!-- Display Fill In The Blanks Intention -->
+    <h2>Fill In The Blanks Intention</h2>
+    <ul>
+        {% if fill_in_blanks_data %}
+            {% for data in fill_in_blanks_data %}
+                <li>
+                    Identity: {{ data.identity }}<br>
+                    Action: {{ data.action }}<br>
+                    Feeling: {{ data.feeling }}<br>
+                    Submitted on: {{ data.form_submission_date }}
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>No Fill In The Blanks Intention found for {{ selected_date }}.</p>
+        {% endif %}
+    </ul>
+</body>
+</html>

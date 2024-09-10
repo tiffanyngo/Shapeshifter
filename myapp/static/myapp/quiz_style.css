@@ -1,0 +1,48 @@
+
+body {
+  padding-top: 100px; 
+  text-align: center;
+  align-items: center;
+}
+
+/*#presence-question{
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+#thoughts-question{
+  margin-left: 250px;
+  margin-right: 250px;
+}
+*/
+.radio-buttons-container {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-buttons-container label {
+  display: inline-flex;
+  align-items: center;
+}
+
+label #user-input{
+  color:blue;
+
+}
+
+#user-input {
+  color: blue;
+}
+
+input[name="identity"] {
+  width: 80px; /* Adjust the width as needed */
+
+}
+
+input[name="action"] {
+  width: 80px; /* Adjust the width as needed */
+}
+
+input[name="feeling"] {
+  width: 80px; /* Adjust the width as needed */
+}

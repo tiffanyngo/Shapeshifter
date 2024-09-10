@@ -1,0 +1,17 @@
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radio-label {
+  display: flex; /* Ensure label is a flex container */
+  flex-direction: column; /* Stack radio button and text vertically */
+  align-items: center; /* Center items horizontally */
+  margin: 10px; /* Space around each radio button */
+}
+
+.radio-text {
+  margin-top: 5px; /* Space between radio button and text */
+  text-align: center;
+  color: blueviolet;
+}

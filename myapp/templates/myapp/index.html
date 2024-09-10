@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/quiz_style.css' %}">
+</head>
+<body>
+    {% if error_message %}
+        <div class="error">{{ error_message }}</div>
+    {% endif %}
+
+    <!-- Form for Fill In The Blanks Intention -->
+    <form method="POST" id="intention-form">
+        {% csrf_token %}
+
+        <label for="id_action">What would <span id ="user-input">{{user_input }}</span> be doing? </label>
+        <input type="text" name="action" id="id_action" value="{{ fill_in_the_blanks_intention.action.value }}"> <br>
+
+        <label for="id_feeling">What does being <span id ="user-input">{{user_input }}</span> feel like? </label>
+        <input type="text" name="feeling" id="id_feeling" value="{{ fill_in_the_blanks_intention.feeling.value }}"> <br>
+
+    
+    </form>
+
+    <form method ="POST" id ="shift-form">
+        {% csrf_token %}
+        <label>If you have any beliefs that contradict being <span id ="user-input">{{user_input }}</span> , list them below.</label><br>
+       
+            <textarea name="contradictory_beliefs" rows="5" cols="40"></textarea><br>
+
+        <label>For every contradictory belief that you have writen down, write a corresponding one that opposes it and realigns with being <span id ="user-input">{{user_input }}</span> .</label><br>
+       
+            <textarea name="realigned_beliefs" rows="5" cols="40"></textarea><br>
+
+        <label>Create or use technique(s) that will assist you in being present.</label><br>
+       
+            <textarea name="presence_shift" rows="5" cols="40"></textarea><br>
+
+        <label>From the present moment, create technique(s) such as mental visualizations, commands .etc, that will invoke feelings of being <span id ="user-input">{{user_input }}</span>.  
+            Suggestion: Whenever contradictory beliefs,  doubts arise, repeat the statements you wrote above that realigns you with being <span id ="user-input">{{user_input }}</span> . Remember to change your technique(s) if they don’t assist you in realigning your thoughts, actions and behaviours and feeling <span id ="user-input">{{user_input }}</span>  from within.</label>
+       
+            <textarea name="decision_techniques" rows="5" cols="40"></textarea><br>
+
+        
+        <label>From the present moment create promises that will take me to being <span id ="user-input">{{user_input }}</span>.</label><br>
+           
+                <textarea name="promises" rows="5" cols="40"></textarea><br>
+
+
+          <button type="submit" name="submit_intention">Submit Your Shift</button>
+
+    </form>
+
+    <!-- Form for Presence and Thoughts Assessment -->
+    <form method="POST" id="assessment-form">
+        {% csrf_token %}
+        <div id="presence-assessment">
+            <h2>Presence Assessment</h2>
+                <div id = "presence-question"> On a scale of 1-10, how present was I thoughtout the day ? (1 = I kept thinking about the past/future, 10 = I consistently created from the present moment
+                thought the entire day.) If you were not creating from the present moment throught the day, list what was on your mind here.
+                </div>
+                <div>  
+                    <label><input type="radio" name="presence" value="1"> 1</label>
+                    <label><input type="radio" name="presence" value="2"> 2</label>
+                    <label><input type="radio" name="presence" value="3"> 3</label>
+                    <label><input type="radio" name="presence" value="4"> 4</label>
+                    <label><input type="radio" name="presence" value="5"> 5</label>
+                    <label><input type="radio" name="presence" value="6"> 6</label>
+                    <label><input type="radio" name="presence" value="7"> 7</label>
+                    <label><input type="radio" name="presence" value="8"> 8</label>
+                    <label><input type="radio" name="presence" value="9"> 9</label>
+                    <label><input type="radio" name="presence" value="10"> 10</label>
+                </div>
+        </div>
+
+        <div id="thoughts-assessment">
+            <h2>Thoughts Assessment</h2>
+                <div id = "thoughts-question">On a scale of 1-10, are my thoughts coming from a place of being <span id ="user-input">{{user_input }}</span>?
+                (1 = my thoughts are completely misaligned, 10 = all of my thoughts have come from a place of being <span id ="user-input">{{user_input }}</span>.) If there were thoughts today that contradict being <span id ="user-input">{{user_input }}</span>, list them down here.
+                </div>
+                <div>  
+                    <label><input type="radio" name="thoughts" value="1"> 1</label>
+                    <label><input type="radio" name="thoughts" value="2"> 2</label>
+                    <label><input type="radio" name="thoughts" value="3"> 3</label>
+                    <label><input type="radio" name="thoughts" value="4"> 4</label>
+                    <label><input type="radio" name="thoughts" value="5"> 5</label>
+                    <label><input type="radio" name="thoughts" value="6"> 6</label>
+                    <label><input type="radio" name="thoughts" value="7"> 7</label>
+                    <label><input type="radio" name="thoughts" value="8"> 8</label>
+                    <label><input type="radio" name="thoughts" value="9"> 9</label>
+                    <label><input type="radio" name="thoughts" value="10"> 10</label>
+                </div>
+        </div>
+
+        <div id="feelings-assessment">
+            <h2>Feelings Assessment</h2>
+                <div id = "feelings-question">On a scale of 1-10, are my feelings coming from a place of being <span id ="user-input">{{user_input }}</span>?
+                    (1 = my feelings are completely misaligned, 10 = all of my feelings have come from a place of being <span id ="user-input">{{user_input }}</span>.) If there were feelings today that contradict being <span id ="user-input">{{user_input }}</span>, list them down here.
+                </div>
+                <div>  
+                    <label><input type="radio" name="feelings" value="1"> 1</label>
+                    <label><input type="radio" name="feelings" value="2"> 2</label>
+                    <label><input type="radio" name="feelings" value="3"> 3</label>
+                    <label><input type="radio" name="feelings" value="4"> 4</label>
+                    <label><input type="radio" name="feelings" value="5"> 5</label>
+                    <label><input type="radio" name="feelings" value="6"> 6</label>
+                    <label><input type="radio" name="feelings" value="7"> 7</label>
+                    <label><input type="radio" name="feelings" value="8"> 8</label>
+                    <label><input type="radio" name="feelings" value="9"> 9</label>
+                    <label><input type="radio" name="feelings" value="10"> 10</label>
+                </div>
+
+        </div>
+
+        <div id="actions-assessment">
+            <h2>Actions Assessment</h2>
+                <div id = "actions-question">On a scale of 1-10, are my actions coming from a place of being a <span id ="user-input">{{user_input }}</span> ?
+                    (1 = my thoughts are completely misaligned, 10 = all of my actions have come from a place of being <span id ="user-input">{{user_input }}</span>.) If there were actions today that contradict being <span id ="user-input">{{user_input }}</span>, list them down here.
+                </div>
+                <div>  
+                    <label><input type="radio" name="actions" value="1"> 1</label>
+                    <label><input type="radio" name="actions" value="2"> 2</label>
+                    <label><input type="radio" name="actions" value="3"> 3</label>
+                    <label><input type="radio" name="actions" value="4"> 4</label>
+                    <label><input type="radio" name="actions" value="5"> 5</label>
+                    <label><input type="radio" name="actions" value="6"> 6</label>
+                    <label><input type="radio" name="actions" value="7"> 7</label>
+                    <label><input type="radio" name="actions" value="8"> 8</label>
+                    <label><input type="radio" name="actions" value="9"> 9</label>
+                    <label><input type="radio" name="actions" value="10"> 10</label>
+                </div>
+
+        </div>
+
+        <div id="behaviours-assessment">
+            <h2>Behaviours Assessment</h2>
+                <div id = "behaviours-question">On a scale of 1-10, are my actions coming from a place of being a <span id ="user-input">{{user_input }}</span>?
+                    (1 = my thoughts are completely misaligned, 10 = all of my actions have come from a place of being <span id ="user-input">{{user_input }}</span>.) If there were actions today that contradict being <span id ="user-input">{{user_input }}</span>, list them down here.
+                </div>
+                <div>  
+                    <label><input type="radio" name="behaviours" value="1"> 1</label>
+                    <label><input type="radio" name="behaviours" value="2"> 2</label>
+                    <label><input type="radio" name="behaviours" value="3"> 3</label>
+                    <label><input type="radio" name="behaviours" value="4"> 4</label>
+                    <label><input type="radio" name="behaviours" value="5"> 5</label>
+                    <label><input type="radio" name="behaviours" value="6"> 6</label>
+                    <label><input type="radio" name="behaviours" value="7"> 7</label>
+                    <label><input type="radio" name="behaviours" value="8"> 8</label>
+                    <label><input type="radio" name="behaviours" value="9"> 9</label>
+                    <label><input type="radio" name="behaviours" value="10"> 10</label>
+                </div>
+
+        </div>
+
+
+        <div id="decision-assessment">
+            <h2>Decision Assessment</h2>
+                <div id = "decision-question">On a scale of 1-10, how firm is your decision to be <span id ="user-input">{{user_input }}</span>. ( 1 = I have not decided if I am <span id ="user-input">{{user_input }}</span>. 5 = I am wavering in my decision of being <span id ="user-input">{{user_input }}</span>. 10 )=  I have made a firm decision that I am <span id ="user-input">{{user_input }}</span>. If you chose number 2, list the reasons below, as to why you are are not firm in your decision of being <span id ="user-input">{{user_input }}</span>. Do you truly desire to be <span id ="user-input">{{user_input }}</span>? if not why?
+                </div>
+                <div>  
+                    <label><input type="radio" name="decision_assessment" value="1"> 1</label>
+                    <label><input type="radio" name="decision_assessment" value="2"> 2</label>
+                    <label><input type="radio" name="decision_assessment" value="3"> 3</label>
+                    <label><input type="radio" name="decision_assessment" value="4"> 4</label>
+                    <label><input type="radio" name="decision_assessment" value="5"> 5</label>
+                    <label><input type="radio" name="decision_assessment" value="6"> 6</label>
+                    <label><input type="radio" name="decision_assessment" value="7"> 7</label>
+                    <label><input type="radio" name="decision_assessment" value="8"> 8</label>
+                    <label><input type="radio" name="decision_assessment" value="9"> 9</label>
+                    <label><input type="radio" name="decision_assessment" value="10"> 10</label>
+                </div>
+
+        </div>
+
+        <div id="naturalness-assessment">
+            <h2>Naturalness Assessment</h2>
+                <div id = "naturalness-question">On a scale of 1-10, how natural does it feel to be <span id ="user-input">{{user_input }}</span>. ( 1 = I don’t feel like I am <span id ="user-input">{{user_input }}</span> at all, I feel aligned to the beliefs that contradict being <span id ="user-input">{{user_input }}</span>,   10 = Being <span id ="user-input">{{user_input }}</span> feels completely natural to me.)
+                </div>
+                <div>  
+                    <label><input type="radio" name="naturalness" value="1"> 1</label>
+                    <label><input type="radio" name="naturalness" value="2"> 2</label>
+                    <label><input type="radio" name="naturalness" value="3"> 3</label>
+                    <label><input type="radio" name="naturalness" value="4"> 4</label>
+                    <label><input type="radio" name="naturalness" value="5"> 5</label>
+                    <label><input type="radio" name="naturalness" value="6"> 6</label>
+                    <label><input type="radio" name="naturalness" value="7"> 7</label>
+                    <label><input type="radio" name="naturalness" value="8"> 8</label>
+                    <label><input type="radio" name="naturalness" value="9"> 9</label>
+                    <label><input type="radio" name="naturalness" value="10"> 10</label>
+                </div>
+
+        </div>
+
+
+
+        <button id="submit-button" type="submit" name="submit_assessment">
+            Submit Assessment
+        </button>
+    </form>
+
+    <!-- Separate Form for Date Selection -->
+    <form method="GET" id="date-selection-form" action="{% url 'selected_date_results' %}">
+        {% csrf_token %}
+        <div id="date-selection">
+            <h2>Select a Date</h2>
+            {{ date_selection_form.as_p }}
+        </div>
+        <button type="submit">Filter by Date</button>
+    </form>
+
+    <!-- Display results if available -->
+    {% if selected_date %}
+        <h2>Records for {{ selected_date }}</h2>
+        {% if presence_data %}
+            <ul>
+                {% for record in presence_data %}
+                    <li>{{ record.form_submission_date }} - {{ record.choice }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No records found for {{ selected_date }}.</p>
+        {% endif %}
+        {% if fill_in_blanks_data %}
+            <h3>Fill In The Blanks Data</h3>
+            <ul>
+                {% for record in fill_in_blanks_data %}
+                    <li>{{ record.identity }} | {{ record.action }} | {{ record.feeling }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shape-Shifter</title>
+</head>
+<body>
+  
+    <form method="POST" id="intention-form">
+        {% csrf_token %}
+        <label for="id_identity">I have decided to be:  </label> 
+        <input type="text" name="identity" id="id_identity" value="{{ fill_in_the_blanks_intention.identity.value }}"> <br>
+
+        
+        <button type="submit" name="submit_decision">Submit Your Decision</button>
+    </form>
+    
+</body>
+</html>
