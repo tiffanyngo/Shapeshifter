@@ -15,7 +15,7 @@ ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = "django-insecure-wdzz=tu^1o54pk)_umud+l-c)x0tkpuf+!1s04m^6vh_o*=l!t"
 DEBUG = True
-ALLOWED_HOSTS = ['192.168.1.24', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['shapeshifter-uev9.onrender.com']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
