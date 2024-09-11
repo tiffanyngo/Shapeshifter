@@ -38,6 +38,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Set session to expire after 15 minutes of inactivity
+SESSION_COOKIE_AGE = 1 * 60  # 15 minutes in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Session expires when the user closes the browser
+SESSION_SAVE_EVERY_REQUEST = True  # Update session expiry with every request
+
+
 ROOT_URLCONF = "myproject.urls"
 
 TEMPLATES = [
